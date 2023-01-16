@@ -14611,15 +14611,25 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>$ T = \Sigma_{k=0}^{24} 30 \cdot (1-p)^k $</p>
+<p>De formule voor de totale tijd is: 
+$ T = \Sigma_{k=0}^{24} 30 \cdot (1-p)^k $</p>
+<p>$p$ is hier onbekend, 30s is gegeven als tijd van de eerste ronde. We weten dat hij steeds langzamer rijdt, dus $p$ is negatief.
+De totale tijd $T$ is:</p>
 <p>$T = 14 \cdot 60 + 7.3$</p>
 <p>$T = 847.3$</p>
+<p>We weten dat we de totale tijd kunnen schrijven als:</p>
 <p>$T = 30 \cdot \frac{1-(1-p)^{25}}{1-(1-p)}$</p>
 <p>$\frac{T}{30} = \frac{1-(1-p)^{25}}{p}$</p>
+<p>Let op! $p$ kan dus niet 0 zijn want dan deel je door nul!</p>
 <p>$\frac{T}{30} \cdot p = 1-(1-p)^{25}$</p>
+<p>Dus de juiste waarde van $p$ is de oplossing van deze vergelijking:</p>
 <p>$0 = 1 - \frac{T}{30} \cdot p -(1-p)^{25}$</p>
+<p>Hieronder is de grafiek geplot van $Y = 1 - \frac{T}{30} \cdot p -(1-p)^{25}$</p>
+<p>Je kunt de waarde van $p$ aflezen. Let op! $p=0$ hadden we hierboven al uitgesloten als geldige oplossing</p>
 <p>$p\simeq -0.01$</p>
 <p>$p\simeq -1\%$</p>
+<p>De vraag was hoe lang hij over de laatse ronde deed. Dat is</p>
+<p>$t_{laatse ronde} = 30 \cdot (1-p)^25$</p>
 
 </div>
 </div>
@@ -14649,6 +14659,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">nul</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">p</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.01</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tijd laatste ronde is:&quot;</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14686,6 +14699,16 @@ class="
 >
 </div>
 
+</div>
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Tijd laatste ronde is: 38.472959850517015
+</pre>
+</div>
 </div>
 
 </div>
