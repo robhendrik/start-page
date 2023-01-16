@@ -14629,7 +14629,15 @@ De totale tijd $T$ is:</p>
 <p>$p\simeq -0.01$</p>
 <p>$p\simeq -1\%$</p>
 <p>De vraag was hoe lang hij over de laatse ronde deed. Dat is</p>
-<p>$t_{laatse ronde} = 30 \cdot (1-p)^25$</p>
+<p>$t_{laatse\:ronde} = 30 \cdot (1-p)^{25}$</p>
+<h3 id="Controle">Controle<a class="anchor-link" href="#Controle">&#182;</a></h3><p>We kunnen nog even controleren of met $p =-1\%$ we inderdaad op de juiste tijd uitkomen ($T = 847.3$)</p>
+<p>Hiervoor gebruiken we de code hieronder:</p>
+<blockquote>
+<p><code>for k in range(0,25):</code> <br>
+  <code>ronde_tijd = 30*(1-p)**k</code><br>
+  <code>tijd = tijd + ronde_tijd</code><br></p>
+</blockquote>
+<p>Inderdaad klopt het: <code>De totale tijd is: 14.0 minuten en 7.295985051700882 seconden</code></p>
 
 </div>
 </div>
@@ -14649,19 +14657,31 @@ De totale tijd $T$ is:</p>
 <span class="n">Y</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">X</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">nul</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
-    <span class="n">p</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.02</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.001</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="mi">30</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">25</span>
+
+<span class="c1"># op de x-as komt p te staan, en op de y-as Y</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">):</span>  <span class="c1"># i loopt van 0 tot 19</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.02</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mf">0.001</span> <span class="c1"># p loopt dan vanaf -2% naar 0 in stapjes van 0.1%</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="n">T</span><span class="o">/</span><span class="mi">30</span><span class="p">)</span> <span class="o">*</span> <span class="n">p</span> <span class="o">-</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">25</span> <span class="c1"># dit is de formule voor i, de juiste waarde voor p vind je als deze y nul is</span>
     <span class="n">Y</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
     <span class="n">nul</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
     <span class="n">X</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
 
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">nul</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">)</span> <span class="c1">#teken de grafiek</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">nul</span><span class="p">)</span> <span class="c1">#teken ook de x-as erbij</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 
+<span class="c1">#Bereken de tijd van de laatste ronde</span>
 <span class="n">p</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.01</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Tijd laatste ronde is:&quot;</span><span class="p">,</span> <span class="mi">30</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># Bereken ter controle de totale tijd</span>
+<span class="n">tijd</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">):</span>
+    <span class="n">ronde_tijd</span> <span class="o">=</span> <span class="mi">30</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p</span><span class="p">)</span><span class="o">**</span><span class="n">k</span>
+    <span class="n">tijd</span> <span class="o">=</span> <span class="n">tijd</span> <span class="o">+</span> <span class="n">ronde_tijd</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;De totale tijd is: &#39;</span><span class="p">,</span> <span class="n">tijd</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;De totale tijd is: &#39;</span><span class="p">,</span> <span class="n">tijd</span><span class="o">//</span><span class="mi">60</span><span class="p">,</span> <span class="s1">&#39; minuten en &#39;</span><span class="p">,</span> <span class="n">tijd</span><span class="o">%</span><span class="k">60</span>, &#39;seconden&#39; )
 </pre></div>
 
      </div>
@@ -14707,6 +14727,8 @@ class="
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>Tijd laatste ronde is: 38.472959850517015
+De totale tijd is:  847.2959850517009
+De totale tijd is:  14.0  minuten en  7.295985051700882 seconden
 </pre>
 </div>
 </div>
@@ -14715,6 +14737,17 @@ class="
 
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+
+</div>
+</div>
+</div>
 </div>
 </body>
 
