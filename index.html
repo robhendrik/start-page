@@ -14611,13 +14611,13 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>De formule voor de totale tijd is: 
+<h3 id="De-opgave">De opgave<a class="anchor-link" href="#De-opgave">&#182;</a></h3><p>De formule voor de totale tijd is: 
 $ T = \Sigma_{k=0}^{24} 30 \cdot (1-p)^k $</p>
 <p>$p$ is hier onbekend, 30s is gegeven als tijd van de eerste ronde. We weten dat hij steeds langzamer rijdt, dus $p$ is negatief.
 De totale tijd $T$ is:</p>
 <p>$T = 14 \cdot 60 + 7.3$</p>
 <p>$T = 847.3$</p>
-<p>We weten dat we de totale tijd kunnen schrijven als:</p>
+<h3 id="Oplossing">Oplossing<a class="anchor-link" href="#Oplossing">&#182;</a></h3><p>We weten dat we de totale tijd kunnen schrijven als:</p>
 <p>$T = 30 \cdot \frac{1-(1-p)^{25}}{1-(1-p)}$</p>
 <p>$\frac{T}{30} = \frac{1-(1-p)^{25}}{p}$</p>
 <p>Let op! $p$ kan dus niet 0 zijn want dan deel je door nul!</p>
@@ -14628,7 +14628,7 @@ De totale tijd $T$ is:</p>
 <p>Je kunt de waarde van $p$ aflezen. Let op! $p=0$ hadden we hierboven al uitgesloten als geldige oplossing</p>
 <p>$p\simeq -0.01$</p>
 <p>$p\simeq -1\%$</p>
-<p>De vraag was hoe lang hij over de laatse ronde deed. Dat is</p>
+<h3 id="Het-antwoord">Het antwoord<a class="anchor-link" href="#Het-antwoord">&#182;</a></h3><p>De vraag was hoe lang hij over de laatse ronde deed. Dat is</p>
 <p>$t_{laatse\:ronde} = 30 \cdot (1-p)^{25}$</p>
 <h3 id="Controle">Controle<a class="anchor-link" href="#Controle">&#182;</a></h3><p>We kunnen nog even controleren of met $p =-1\%$ we inderdaad op de juiste tijd uitkomen ($T = 847.3$)</p>
 <p>Hiervoor gebruiken we de code hieronder:</p>
